@@ -4,11 +4,9 @@ import './NotFound.scss';
 
 const NotFound = () => {
     return (
-        <>
-            <Layout>
-                <p className="not-found"> Unfortunately we can't find that page</p>
-            </Layout>
-        </>
+        <Layout>
+            <p className="not-found"> Unfortunately we can't find that page</p>
+        </Layout>
     );
 }
 

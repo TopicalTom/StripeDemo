@@ -6,13 +6,11 @@ import FeaturedCollection from  '../../components/FeaturedCollection/FeaturedCol
 
 const Home = () => {
     return (
-        <>
-            <Layout>
-                <Hero />
-                <MainSection />
-                <FeaturedCollection />
-            </Layout>
-        </>
+        <Layout>
+            <Hero />
+            <MainSection />
+            <FeaturedCollection />
+        </Layout>
     );
 }
 
