@@ -1,6 +1,5 @@
 import React from 'react';
 import shoppingBag from '../../assets/shopping-bag.png';
-//import { Link } from 'react-router-dom';
 import './CartIcon.scss';
 
 const CartIcon = () => {
