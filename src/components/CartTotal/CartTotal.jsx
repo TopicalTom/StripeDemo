@@ -13,7 +13,7 @@ const CartTotal = ({ history, itemCount, total, clearCart }) => {
             <div className="checkout">
                 <button 
                     className="button is-black" 
-                    onClick={() => history.pushState('/checkout')}>
+                    onClick={() => history.push('/checkout')}>
                     CHECKOUT
                 </button>
                 <button
