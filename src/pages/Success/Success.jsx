@@ -5,8 +5,8 @@ import Layout from '../../layout/Layout';
 import '../Checkout/Checkout.scss';
 
 const Success = ({ history }) => {
-    const { clearCart } = useContext(CartContext);
-    
+    const { clearCart, cartItems } = useContext(CartContext);
+
     useEffect(() => {
         if (cartItems.length !== 0) { clearCart() }
     }, [clearCart, cartItems]);
