@@ -1,12 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Layout from '../../layout/Layout';
 import { Formik } from 'formik';
+import { withRouter } from 'react-router-dom';
+import { auth } from '../../firebase/index';
 import './SignIn.scss';
 
 const SignIn = () => {
+    const [error, setError] = useState(null);
     const initialValues = {
         email: '',
         password: '',
+    }
+
+    const handleSignIn = async (values, { setSubmitting }) => {
+        const { email, password } = values;
+
+        try {
+            await auth.signInWithEmailAndPassword(email, password);
+            setSubmitting(false);
+            PushManager('/shop');
+        } catch (error) {
+            console.log(error);
+            setSubmitting(false);
+            setError(error);
+        }
     }
 
     return (
@@ -16,9 +33,7 @@ const SignIn = () => {
                 <div className="form-container">
                     <Formik
                         initialValues={initialValues}
-                        onSubmit={(values) => {
-                            console.log(values)
-                        }}
+                        onSubmit={handleSignIn}
                     >
                         {
                             ({values, errors, handleChange, handleSubmit, isSubmitting}) => {
@@ -53,6 +68,11 @@ const SignIn = () => {
                                                 Sign In
                                             </button>
                                         </div>
+                                        <div className="error-message">
+                                            {error &&
+                                                <p>{error.message}</p>
+                                            }
+                                        </div>
                                     </form>
                                 )
                             }
@@ -64,4 +84,4 @@ const SignIn = () => {
     );
 }
 
-export default SignIn;
+export default withRouter(SignIn);
