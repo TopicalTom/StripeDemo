@@ -1,5 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+import 'firebase/auth';
 
 const config = {
     apiKey: "AIzaSyAn15tBo889ELBprq1mH86Fen2tY5RSt1E",
@@ -13,6 +14,7 @@ const config = {
 firebase.initializeApp(config);
 
 const firestore = firebase.firestore();
+const auth = firebase.auth();
 
 const createUserProfileDocument = async (userAuth, additionalData) => {
     if (!userAuth) { return };
@@ -35,8 +37,12 @@ const createUserProfileDocument = async (userAuth, additionalData) => {
             console.log('error creating user', error.message)
         }
     }
+
+    return userRef;
 }
 
 export {
     firestore,
+    auth,
+    createUserProfileDocument
 }
