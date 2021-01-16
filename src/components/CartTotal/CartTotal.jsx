@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import './CartTotal.scss'
 
-const CartTotal = ({ history, itemCount, total }) => {
+const CartTotal = ({ history, itemCount, total, clearCart }) => {
 
     return (
         <div className="total-container">
@@ -18,7 +18,7 @@ const CartTotal = ({ history, itemCount, total }) => {
                 </button>
                 <button
                     className="button is-white" 
-                    onClick={() => {}}>
+                    onClick={() => clearCart()}>
                     CLEAR
                 </button>
             </div>

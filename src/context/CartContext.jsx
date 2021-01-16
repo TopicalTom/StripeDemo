@@ -1,9 +1,13 @@
 import React, { createContext, useReducer} from 'react';
-import cartReducer from '../utils/cartReducer';
+import cartReducer, { sumItems } from '../utils/cartReducer';
 
 export const CartContext = createContext();
 
-const initialState = { cartItems: [], itemCount: 0, total: 0 };
+const cartFromStorage = localStorage.getItem('cart') 
+    ?   JSON.parse(localStorage.getItem('cart')) 
+    :   [];
+
+const initialState = { cartItems: cartFromStorage, ...sumItems(cartFromStorage) };
 
 const CartContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(cartReducer, initialState);
@@ -11,13 +15,15 @@ const CartContextProvider = ({ children }) => {
     const increase = (product) => dispatch({type: 'INCREASE', payload: product});
     const decrease = (product) => dispatch({type: 'DECREASE', payload: product});
     const remove = (product) => dispatch({type: 'REMOVE', payload: product});
+    const clearCart = () => dispatch({type: 'CLEAR'});
     
     const contextValues = {
         ...state,
         addProduct,
         increase,
         decrease,
-        remove
+        remove,
+        clearCart
     }
 
     return (

@@ -3,7 +3,7 @@ import { PlusCircleIcon, MinusCircleIcon, TrashIcon } from '../../assets/Icons/i
 import './CartItem.scss'
 
 const CartItem = (props) => {
-    const { increase, decrease, remove, title, imageUrl, price, quantity, id, description } = props;
+    const { increase, decrease, remove, clearCart, title, imageUrl, price, quantity, id, description } = props;
     const product = { title, imageUrl, price, quantity, id, description };
 
     return (
