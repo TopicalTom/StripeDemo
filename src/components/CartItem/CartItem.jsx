@@ -2,9 +2,9 @@ import React from 'react';
 import { PlusCircleIcon, MinusCircleIcon, TrashIcon } from '../../assets/Icons/index';
 import './CartItem.scss'
 
-const CartItem = (product) => {
-
-    const { title, imageUrl, price, quantity } = product;
+const CartItem = (props) => {
+    const { increase, decrease, remove, title, imageUrl, price, quantity, id, description } = props;
+    const product = { title, imageUrl, price, quantity, id, description };
 
     return (
         <div className="cart-item">
@@ -22,16 +22,24 @@ const CartItem = (product) => {
                 <p>{`Quantity: ${quantity}`}</p>
             </div>
             <div className="btns-container">
-                <button className="btn-increase">
+                <button 
+                    className="btn-increase"
+                    onClick={() => increase(product)}>
                     <PlusCircleIcon width='20px' />
                 </button>
-                {quantity === 1 &&
-                    <button className="btn-trash">
+                {
+                    quantity === 1 &&
+                    <button 
+                        className="btn-trash"
+                        onClick={() => remove(product)}>
                         <TrashIcon width='20px' />
                     </button>
                 }
-                {quantity > 1 &&
-                    <button className="btn-decrease">
+                {
+                    quantity > 1 &&
+                    <button 
+                        className="btn-decrease"
+                        onClick={() => decrease(product)}>
                         <MinusCircleIcon width='20px' />
                     </button>
                 }

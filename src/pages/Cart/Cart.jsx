@@ -6,7 +6,8 @@ import Total from '../../components/CartTotal/CartTotal';
 import './Cart.scss';
 
 const Cart = () => {
-    const { cartItems, itemCount, total, } = useContext(CartContext)
+    const { cartItems, itemCount, total, increase, decrease, remove } = useContext(CartContext);
+    const funcs = {increase, decrease, remove };
     return (
         <Layout>
             <>
@@ -16,7 +17,7 @@ const Cart = () => {
                     :   <div className="cart-page">
                             <div className="cart-item-container">
                                 {cartItems.map(item => 
-                                    <Item { ...item} key={item.id} />
+                                    <Item { ...item} { ...funcs} key={item.id} />
                                 )}
                             </div>
                             <Total itemCount={itemCount} total={total}/>
