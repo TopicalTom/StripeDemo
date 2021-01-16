@@ -1,14 +1,15 @@
 import React, { useContext } from 'react';
+import { withRouter } from 'react-router-dom'
 import shoppingBag from '../../assets/shopping-bag.png';
 import { CartContext } from '../../context/CartContext';
 import './CartIcon.scss';
 
-const CartIcon = () => {
+const CartIcon = ({ history }) => {
     const { itemCount, cartItems } = useContext(CartContext)
     console.log('CartItems:', cartItems);
-    
+
     return (
-        <div className="cart-container">
+        <div className="cart-container" onClick={() => history.push('/cart')}>
             <img
                 src={shoppingBag}
                 alt="shopping-cart-icon"
@@ -21,4 +22,4 @@ const CartIcon = () => {
     );
 }
 
-export default CartIcon;
+export default withRouter(CartIcon);

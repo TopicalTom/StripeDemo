@@ -1,0 +1,10 @@
+h1, .empty-cart {
+    text-align: center;
+}
+
+@media(min-width: 1024px) {
+    .cart-page {
+        display: flex;
+        justify-content: center;
+    }
+}
