@@ -1,5 +1,6 @@
 import React from 'react';
 import { Formik } from 'formik';
+import '../StripeCheckout/StripeCheckout.scss';
 
 const validate = values => {
     const { name, email, address } = values;
@@ -19,7 +20,7 @@ const ShippingAddress = ({ setShipping }) => {
     }
 
     return (
-        <div className="">
+        <div>
             <h4>Shipping Address</h4>
             <Formik
                 initialValues={initialValues}
@@ -36,7 +37,7 @@ const ShippingAddress = ({ setShipping }) => {
                             <form onSubmit={handleSubmit}>
                                 <div>
                                     <input 
-                                        className={ "nomad-input" + (name ? 'errors' : '')}
+                                        className={ "nomad-input " + (name ? "error" : "")}
                                         type="text" 
                                         name="name" 
                                         placeholder="Name"
@@ -46,7 +47,7 @@ const ShippingAddress = ({ setShipping }) => {
                                 </div>
                                 <div>
                                     <input 
-                                        className={ "nomad-input" + (email ? 'errors' : '')}
+                                        className={ "nomad-input " + (email ? "error" : "")}
                                         type="email" 
                                         name="email" 
                                         placeholder="Email"
@@ -56,7 +57,7 @@ const ShippingAddress = ({ setShipping }) => {
                                 </div>
                                 <div>
                                     <input 
-                                        className={ "nomad-input" + (address ? 'errors' : '')}
+                                        className={ "nomad-input " + (address ? "error" : "")}
                                         type="text" 
                                         name="address" 
                                         placeholder="Address"
