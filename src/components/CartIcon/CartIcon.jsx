@@ -5,8 +5,7 @@ import { CartContext } from '../../context/CartContext';
 import './CartIcon.scss';
 
 const CartIcon = ({ history }) => {
-    const { itemCount, cartItems } = useContext(CartContext)
-    console.log('CartItems:', cartItems);
+    const { itemCount } = useContext(CartContext)
 
     return (
         <div className="cart-container" onClick={() => history.push('/cart')}>

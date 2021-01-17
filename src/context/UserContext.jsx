@@ -26,9 +26,11 @@ const UserContextProvider = ({ children }) => {
         });
 
         return () => unsubscribeFromAuth();
-    });
+    }, []);
 
     const contextValues = { user, loading };
+
+    if(loading) { return <div>Loading...</div> }
 
     return (
         <UserContext.Provider value={ contextValues }>

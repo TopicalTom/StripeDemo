@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { auth } from '../../firebase/index';
+import { UserContext } from '../../context/UserContext';
 import CartIcon from '../CartIcon/CartIcon';
 import './Header.scss';
 
 const Header = () => {
+    const { user } = useContext(UserContext);
+    
     return (
         <nav className="nav-menu container">
             <div className="logo">
@@ -20,6 +24,25 @@ const Header = () => {
                         Shop
                     </Link>
                 </li>
+                {!user &&
+                    <li>
+                        <Link to="/sign-in">
+                            Sign In
+                        </Link>
+                    </li>
+                }
+                {user &&
+                    <li onClick={() => auth.signOut()}>
+                        Sign out
+                    </li>
+                }
+                {!user &&
+                    <li>
+                        <Link to="/sign-up">
+                            Sign Up
+                        </Link>
+                    </li>
+                }
             </ul>
             <CartIcon />
         </nav>

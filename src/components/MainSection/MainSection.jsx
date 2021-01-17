@@ -15,7 +15,7 @@ const MainSection = ({ history }) => {
                 </div>
                 <div className="ms-m-description">
                     <h2>
-                        Designed for fasion. Crafted for sport.
+                        Designed for fashion. Crafted for sport.
                     </h2>
                     <p>
                         We make products that effortlessly transition from day to night.
